@@ -38,7 +38,7 @@ public class Connection implements Runnable {
 			System.exit(-1);
 		}
 		running = true;
-		this.sendOverConnection("OK Welcome to the chat server, there are currelty " + serverReference.getNumberOfUsers() + " user(s) online");
+		this.sendOverConnection("OK Welcome to the chat server, there are currently " + serverReference.getNumberOfUsers() + " user(s) online");
 		while(running) {
 			try {
 				line = in.readLine();
@@ -185,10 +185,10 @@ public class Connection implements Runnable {
 	private void quit() {
 		switch(state) {
 			case STATE_REGISTERED:
-				sendOverConnection("OK thank you for sending " + messageCount + " message(s) with the chat service, goodbye. ");
+				sendOverConnection("OK thank you for sending " + messageCount + " message(s) with the chat service, goodbye.");
 				break;
 			case STATE_UNREGISTERED:
-				sendOverConnection("OK goodbye");
+				sendOverConnection("OK goodbye.");
 				break;
 		}
 		running = false;

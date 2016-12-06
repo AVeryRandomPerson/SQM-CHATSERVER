@@ -27,7 +27,7 @@ public class Server {
 					c = new Connection(server.accept(), this);
 				}
 				catch (IOException e) {
-					System.err.println("error setting up new client conneciton");
+					System.err.println("error setting up new client connection");
 					e.printStackTrace();
 				}
 				Thread t = new Thread(c);
@@ -45,13 +45,12 @@ public class Server {
 		}
 		return userList;
 	}
-	
+
 	public boolean doesUserExist(String newUser) {
 		boolean result = false;
-		for( Connection clientThread: list){
-			if(clientThread.getState() == Connection.STATE_REGISTERED) {
-				result = clientThread.getUserName().compareTo(newUser)==0;
-			}
+		for( String users: this.getUserList()){
+			result = users.equals(newUser);
+			if(result) break;
 		}
 		return result;
 	}
